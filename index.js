@@ -1,8 +1,8 @@
 const express = require("express")
 const helmet = require("helmet")
-const zoosRouter = require("./zoos/zoos-router")
-const animalsRouter = require("./animals/animals-router")
-const speciesRouter = require("./species/species-router")
+const zoosRouter = require("./routers/zoos")
+const animalsRouter = require("./routers/animals")
+const speciesRouter = require("./routers/species")
 
 const server = express()
 const port = process.env.PORT || 4000
