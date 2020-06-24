@@ -3,7 +3,7 @@ const Species = require("../models/species")
 
 const router = express.Router()
 
-router.get("/", async (req, res, next) => {
+router.get("/species", async (req, res, next) => {
 	try {
 		const species = await Species.find()
 		res.json(species)
@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
 	}
 })
 
-router.get("/:id", async (req, res, next) => {
+router.get("/species/:id", async (req, res, next) => {
 	try {
 		const species = await Species.findById(req.params.id)
 		if (!species) {

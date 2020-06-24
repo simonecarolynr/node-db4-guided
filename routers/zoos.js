@@ -3,7 +3,7 @@ const Zoo = require("../models/zoo")
 
 const router = express.Router()
 
-router.get("/", async (req, res, next) => {
+router.get("/zoos", async (req, res, next) => {
 	try {
 		const zoos = await Zoo.find()
 		res.json(zoos)
@@ -12,7 +12,7 @@ router.get("/", async (req, res, next) => {
 	}
 })
 
-router.get("/:id", async (req, res, next) => {
+router.get("/zoos/:id", async (req, res, next) => {
 	try {
 		const zoo = await Zoo.findById(req.params.id)
 		if (!zoo) {

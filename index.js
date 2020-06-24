@@ -10,9 +10,9 @@ const port = process.env.PORT || 4000
 server.use(helmet())
 server.use(express.json())
 
-server.use("/zoos", zoosRouter)
-server.use("/animals", animalsRouter)
-server.use("/species", speciesRouter)
+server.use(zoosRouter)
+server.use(animalsRouter)
+server.use(speciesRouter)
 
 server.use((err, req, res, next) => {
 	console.log(err)
