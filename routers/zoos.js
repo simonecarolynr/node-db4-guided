@@ -1,11 +1,12 @@
 const express = require("express")
-const db = require("../data/config")
+const Zoo = require("../models/zoo")
 
 const router = express.Router()
 
 router.get("/", async (req, res, next) => {
 	try {
-		res.json(await db("zoos"))
+		const zoos = await Zoo.find()
+		res.json(zoos)
 	} catch(err) {
 		next(err)
 	}
@@ -13,10 +14,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
 	try {
-		const zoo = await db("zoos")
-			.where("id", req.params.id)
-			.first()
-		
+		const zoo = await Zoo.findById(req.params.id)
 		if (!zoo) {
 			return res.status(404).json({
 				message: "Zoo not found",

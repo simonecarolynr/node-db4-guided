@@ -1,11 +1,12 @@
 const express = require("express")
-const db = require("../data/config")
+const Species = require("../models/species")
 
 const router = express.Router()
 
 router.get("/", async (req, res, next) => {
 	try {
-		res.json(await db("species"))
+		const species = await Species.find()
+		res.json(species)
 	} catch(err) {
 		next(err)
 	}
@@ -13,10 +14,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
 	try {
-		const species = await db("species")
-			.where("id", req.params.id)
-			.first()
-
+		const species = await Species.findById(req.params.id)
 		if (!species) {
 			return res.status(404).json({
 				message: "Species not found",
