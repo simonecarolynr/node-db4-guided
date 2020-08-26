@@ -4,7 +4,7 @@ Guided project for **Node DB 4** Module.
 
 ## Prerequisites
 
-- [DB Browser for SQLite](https://sqlitebrowser.org) installed.
+- [TablePlus](https://tableplus.com) installed.
 - A rest client like [Insomnia](https://insomnia.rest/download/) or [Postman](https://www.getpostman.com/downloads/) installed.
 - Something to write on and write with.
 
