@@ -13,7 +13,16 @@ function findById(id) {
 		.first("a.id", "a.name", "s.name as species_name")
 }
 
+function findAnimals(zooId) {
+	return db("zoos_animals as za")
+		.join("zoos as z", "z.id", "za.zoo_id")
+		.join("animals as a", "a.id", "za.animal_id")
+		.where("z.id", zooId)
+		.select("a.*")
+}
+
 module.exports = {
+	findAnimals,
 	find,
-	findById,
+	findById
 }
